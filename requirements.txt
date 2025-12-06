@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+seaborn
+jupyterlab
+sqlalchemy
+psycopg2-binary
+pyarrow
+scikit-learn
+prophet   # optional for forecasting
+openpyxl
