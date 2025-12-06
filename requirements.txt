@@ -9,3 +9,4 @@ pyarrow
 scikit-learn
 prophet   # optional for forecasting
 openpyxl
+pyspark
