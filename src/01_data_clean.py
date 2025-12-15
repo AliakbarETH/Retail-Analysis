@@ -28,7 +28,7 @@ df["IsReturn"] = df["Invoice"].astype(str).str.startswith("C")
 
 # Time Features
 
-df["InoviceMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
+df["InvoiceMonth"] = df["InvoiceDate"].dt.to_period("M").astype(str)
 df["Year"] = df["InvoiceDate"].dt.year
 df['Month'] = df['InvoiceDate'].dt.month 
 
