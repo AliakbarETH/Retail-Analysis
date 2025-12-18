@@ -27,6 +27,7 @@ Our dataset has return orders as well so we would like to exclude them since we 
 # print(df.head())
 # Excluding returns
 
+
 df = df[df['Quantity'] > 0].copy()
 
 # Defining analysis datetime for reciency = lastday + 1 day 
@@ -37,44 +38,63 @@ analysis_date = df["InvoiceDate"].max() + timedelta(days=1)
 
 rfm = (
     df.groupby("Customer ID")
-    .agg({
-        "InvoiceDate" : lambda x: (analysis_date - x.max()).days, # Reciency
-        "Invoice" : "nunique", #frequency
-        "Revenue" : "sum" # monetry
-    })
-    .reset_index()
+      .agg(
+          Recency=("InvoiceDate", lambda x: (analysis_date - x.max()).days),
+          Frequency=("Invoice", "nunique"),
+          Monetary=("Revenue", "sum")
+      )
+      .reset_index()
+      .rename(columns={"Customer ID": "CustomerID"})
 )
 
-rfm_columns = ["CustomerID", "Recency", "Frequency", "Monetary"]
+print("RFM metrics:")
+print(rfm.head())
 
-rfm.head()
+
+# rfm_columns = ["CustomerID", "Recency", "Frequency", "Monetary"]
+
+print(rfm.head())
 
 
 # calculating rfm scores
 
-rfm["R_Score"] = pd.qcut(rfm["Recency"], 5, labels=[5,4,3,2,1])
-rfm["F_Score"] = pd.qcut(rfm["Frequency"].rank(method="first"), 5, labels=[1,2,3,4,5])
-rfm["M_Score"] = pd.qcut(rfm["Monetary"], 5, labels=[1,2,3,4,5])
- 
+rfm["R_Score"] = pd.qcut(
+    rfm["Recency"],
+    5,
+    labels=[5, 4, 3, 2, 1]
+).astype(int)
+
+rfm["F_Score"] = pd.qcut(
+    rfm["Frequency"].rank(method="first"),
+    5,
+    labels=[1, 2, 3, 4, 5]
+).astype(int)
+
+rfm["M_Score"] = pd.qcut(
+    rfm["Monetary"],
+    5,
+    labels=[1, 2, 3, 4, 5]
+).astype(int)
+
 
 # combining rfm score
 
-rfm["RFM_score"] = (
+rfm["RFM_Score"] = (
     rfm["R_Score"].astype(str) +
-    rfm["F_Score"].astype(str) + 
+    rfm["F_Score"].astype(str) +
     rfm["M_Score"].astype(str)
 )
 
 # creating business friendly customer segmentation
 
 def segment_customer(row):
-    if row["RFM_Score"] >= "555":
+    if row["RFM_Score"] == "555":
         return "Champions"
-    elif row["R_Score"] >= "4" and row["F_Score"] >= "4":
+    elif row["R_Score"] >= 4 and row["F_Score"] >= 4:
         return "Loyal Customers"
-    elif row["R_Score"] >= "4" and row["F_Score"] <= "2":
-        return "Potential Loyalist"
-    elif row["R_Score"] <= "2" and row["M_Score"] >= "4":
+    elif row["R_Score"] >= 4 and row["F_Score"] <= 2:
+        return "Potential Loyalists"
+    elif row["R_Score"] <= 2 and row["M_Score"] >= 4:
         return "At Risk High Value"
     elif row["RFM_Score"] <= "222":
         return "Lost Customers"
@@ -86,5 +106,10 @@ rfm["Segment"] = rfm.apply(segment_customer, axis=1)
 
 # saving outputs for reporting
 
-rfm.to_csv("../outputs/kpis/rfm_customer_segments.csv", index=False)
+rfm.to_csv(
+    "../outputs/kpis/rfm_customer_segments.csv",
+    index=False
+)
 
+print("\nRFM segmentation completed successfully.")
+print(rfm.head())
