@@ -1,108 +1,139 @@
-# 🛒 UK Retail Analytics Project — Customer Value, Retention & Revenue Risk
+# 🛒 UK Retail Analytics Project  
+### Customer Value, Retention Strategy & Revenue Risk
 
 An **end-to-end retail analytics project** using real UK transaction data to drive **customer segmentation, retention strategy, revenue forecasting, and product bundling decisions**.
 
-This project simulates how a UK retailer (e.g., **Tesco**) could leverage data analytics to improve **customer retention, revenue stability, and marketing efficiency**.
+This project simulates how a large UK retailer (e.g., **Tesco**) could use data analytics to move from **volume-based marketing** to **value-based customer strategy**, protecting revenue and improving long-term profitability.
 
 ---
 
 ## 📌 Business Objectives
 
-This project answers key commercial questions:
+This analysis answers key commercial questions faced by retail leadership:
 
-- Which customer segments drive the majority of revenue?
-- Which customers are at risk of churn and revenue loss?
-- What is the expected revenue risk over the next 6 months?
+- Which customer segments generate the majority of revenue?
+- How concentrated is revenue among customers (Pareto risk)?
+- How much revenue is currently at risk due to churn?
+- Which customers drive disproportionate lifetime value?
+- Are newer customer cohorts retaining as well as older ones?
 - Which products should be bundled to increase basket size?
-- Which customer cohorts show declining retention?
-- Which customers contribute disproportionately high lifetime value?
+- What is the expected revenue outlook for the next 6 months?
 
 ---
 
 ## 📊 Dataset Overview
 
 - **Transactions:** 1,067,000+ retail transactions  
-- **Time Range:** December 2009 – December 2011  
+- **Time Period:** December 2009 – December 2011  
 - **Geography:** UK + international customers  
-- **Data Fields:**  
-  - Invoice  
-  - Product  
+- **Fields:**
+  - Invoice Number  
+  - Product Description  
   - Quantity  
-  - Price  
+  - Unit Price  
   - Customer ID  
   - Country  
-  - Date  
+  - Transaction Date  
 
 ---
 
 ## 🧠 Analytics Techniques Used
 
 - Data cleaning & feature engineering (Python, Pandas)
-- KPI extraction & business metrics
+- KPI extraction & revenue metrics
 - RFM customer segmentation
 - Customer Lifetime Value (CLV) modeling
+- Revenue concentration (Pareto) analysis
 - Cohort retention analysis
 - Market basket analysis (association rules)
-- Revenue forecasting (time series)
-- Business-driven insight generation
-- Tableau-ready dashboard datasets
+- Time-series revenue forecasting
+- Translation of analytics into business decisions
+- Tableau-ready output datasets
 
 ---
 
-## 🔑 Key Business Insights (With Numbers)
+## 📊 Business Analysis & Insights
 
-### 1️⃣ Revenue Concentration & Customer Segments
+### 1️⃣ Which customer segments deserve immediate retention focus?
 
-| Segment             | Revenue Share |
-|---------------------|---------------|
-| Champions           | 54.9%         |
-| Loyal Customers     | 18.9%         |
-| Needs Attention     | 14.6%         |
-| At Risk High Value  | 7.1%          |
-| Lost Customers      | 2.6%          |
+**Answer:**  
+Retention efforts should prioritize **Champions**, **Loyal Customers**, and **At-Risk High Value** segments.
+
+| Segment            | Revenue Share |
+|--------------------|---------------|
+| Champions          | 54.9%         |
+| Loyal Customers    | 18.9%         |
+| Needs Attention    | 14.6%         |
+| At-Risk High Value | 7.1%          |
+| Lost Customers     | 2.6%          |
 
 **📌 Insight**  
-Over **73% of total revenue** comes from just **two segments** (Champions + Loyal), confirming a strong **Pareto effect**.
+- **Champions + Loyal Customers generate ~73.8% of total revenue**
+- **At-Risk High Value customers** contribute meaningful revenue but show declining engagement
 
 **💡 Business Action**
-- Prioritize retention campaigns for **Champions & Loyal Customers**
-- Launch targeted win-back offers for **At Risk High Value** customers
+- Protect Champions with loyalty rewards and personalized offers  
+- Launch win-back campaigns for At-Risk High Value customers  
+- Deprioritize Lost Customers due to low revenue contribution  
 
 ---
 
-### 2️⃣ Revenue at Risk
+### 2️⃣ How concentrated is revenue among customers (Pareto risk)?
 
-- **Revenue at risk from At-Risk & Lost customers:**  
-  **💰 £2,016,350**
+**Answer:**  
+Revenue is **highly concentrated** among a small subset of customers.
+
+**Evidence**
+- **Top 20% of customers generate ~80.6% of total revenue**
 
 **📌 Insight**  
-If at-risk customers churn completely, the retailer risks losing **~£2M in revenue**.
+A small churn event among high-value customers could materially impact revenue.
 
 **💡 Business Action**
-- Trigger early churn-prevention campaigns
-- Offer personalized incentives based on RFM scores
+- Closely monitor high-value customers  
+- Justify investment in CRM, loyalty programs, and churn prediction  
 
 ---
 
-### 3️⃣ Customer Lifetime Value (CLV)
+### 3️⃣ How much revenue is currently at risk?
 
-Top customers show **extremely high projected 6-month CLV**.
+**Answer:**  
+A significant portion of revenue is exposed to churn.
 
-**Example:**
-- **Customer 15098 → £7.18M projected CLV (6 months)**
+**Evidence**
+- **Revenue at risk (At-Risk + Lost segments): £2,016,350**
 
 **📌 Insight**  
-A very small group of customers drives **disproportionate long-term value**.
+Revenue risk should be assessed by **value**, not customer count.
 
 **💡 Business Action**
-- Create VIP loyalty tiers
-- Assign premium service & exclusive offers to high-CLV customers
+- Allocate retention budget based on revenue impact  
+- Use declining recency and frequency as early churn signals  
 
 ---
 
-### 4️⃣ Retention & Cohort Analysis
+### 4️⃣ Which customers drive disproportionate lifetime value (CLV)?
 
-**Lowest Retention Cohorts**
+**Answer:**  
+A very small number of customers generate **exceptionally high projected CLV**.
+
+**Evidence**
+- Top customers show **6-month projected CLV exceeding £7M**
+- Many high-CLV customers have **short tenure but very high order value**
+
+**📌 Insight**  
+Not all customers should be treated equally.
+
+**💡 Business Action**
+- Identify and protect VIP customers  
+- Offer concierge-level service or exclusive benefits  
+
+---
+
+### 5️⃣ Are customer cohorts showing declining retention?
+
+**Answer:**  
+Yes — recent cohorts show **lower long-term retention**.
 
 | Cohort Month | Avg Retention |
 |-------------|---------------|
@@ -111,46 +142,72 @@ A very small group of customers drives **disproportionate long-term value**.
 | 2010-10     | 13.5%         |
 
 **📌 Insight**  
-Customers acquired in **late-2010** show very poor long-term retention.
+Customers acquired in late-2010 retained poorly compared to earlier cohorts.
 
 **💡 Business Action**
-- Review acquisition channels used during these periods
-- Improve onboarding and post-purchase engagement
+- Review acquisition channels and onboarding experience  
+- Improve first-purchase and post-purchase engagement  
 
 ---
 
-### 5️⃣ Product Bundling (Market Basket Analysis)
+### 6️⃣ Which products should be bundled together?
 
-**High-Confidence Product Bundles**
+**Answer:**  
+Clear product affinity exists between specific SKUs.
 
-- **PINK BLUE FELT CRAFT TRINKET BOX**  
-  ↔ **PINK CREAM FELT CRAFT TRINKET BOX**  
-  *Lift: 12.35*
-
-- **CHARLOTTE BAG SUKI DESIGN**  
-  ↔ **RED RETROSPOT CHARLOTTE BAG**  
-  *Lift: 11.99*
+**Top Bundles (Market Basket Analysis)**
+- *Pink Blue Felt Craft Trinket Box* ↔ *Pink Cream Felt Craft Trinket Box* (Lift: 12.35)
+- *Charlotte Bag Suki Design* ↔ *Red Retrospot Charlotte Bag* (Lift: 11.99)
+- *Woodland Charlotte Bag* ↔ *Strawberry Charlotte Bag*
 
 **📌 Insight**  
-Customers buying one product are **10–12× more likely** to buy its paired product.
+Customers buying one item are **10–12× more likely** to buy its paired product.
 
 **💡 Business Action**
-- Bundle these products in promotions
-- Place them together in-store and online recommendations
+- Introduce bundle pricing  
+- Cross-sell during checkout  
+- Optimize shelf placement and recommendations  
 
 ---
 
-### 6️⃣ Revenue Forecast (Next 6 Months)
+### 7️⃣ What is the expected revenue outlook for the next 6 months?
 
-- **Forecasted Avg Monthly Revenue:** £839,507  
-- **Forecasted 6-Month Revenue:** £5.04M  
+**Answer:**  
+Revenue is forecasted to remain strong but exposed to churn risk.
+
+**Forecast**
+- **Average monthly revenue:** £839,507  
+- **Total 6-month forecast:** £5,037,040  
 
 **📌 Insight**  
-Revenue forecasting enables **early downside-risk detection**.
+Forecasts are achievable **only if retention risk is actively managed**.
 
 **💡 Business Action**
-- Adjust marketing spend and inventory planning
-- Use forecasts for quarterly revenue planning
+- Use forecast + churn risk together for planning  
+- Protect forecasted revenue via retention initiatives  
+
+---
+
+### 8️⃣ What would a UK retailer do differently after this analysis?
+
+**Strategic Shift**
+- Volume-based marketing → **Value-based targeting**
+- Aggressively protect the top 20% of customers
+- Monitor cohort health monthly
+- Bundle high-affinity products to increase basket size
+- Use revenue forecasts alongside churn risk metrics
+
+---
+
+## 🧠 What This Project Demonstrates
+
+- End-to-end retail analytics (cleaning → modeling → insights)
+- RFM segmentation & customer strategy
+- CLV modeling and revenue concentration analysis
+- Cohort retention analysis
+- Market basket analysis (association rules)
+- Revenue forecasting
+- Translating analytics into **clear business decisions**
 
 ---
 
