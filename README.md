@@ -307,6 +307,8 @@ This project includes Tableau-ready datasets designed for executive dashboards c
 # Translation of analytics into clear business decisions
 
 ## 📁 Project Structure
+
+```
 src/
 ├── 01_data_clean.py
 ├── 02_Extracting_KPIs.py
@@ -321,7 +323,7 @@ src/
 ├── 11_business_insights.py
 ├── run_rfm_pipeline.py
 └── main.py
-
+```
 
 ## 📌 Status: Production-ready analytics project
 📊 Audience: Data Analysts, Data Scientists, Business & Product Leaders
