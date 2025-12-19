@@ -75,7 +75,7 @@ python --version
 ```
 
 
-##Step 1: Create a Virtual Environment (Recommended)
+## Step 1: Create a Virtual Environment (Recommended)
 ```
 python -m venv venv
 source venv/bin/activate        # macOS / Linux
@@ -84,7 +84,7 @@ venv\Scripts\activate           # Windows
 
 You should see (venv) in your terminal.
 
-##Step 2: Install Dependencies
+## Step 2: Install Dependencies
 ```
 pip install -r requirements.txt
 ```
@@ -92,7 +92,7 @@ If requirements.txt does not exist yet:
 ```
 pip freeze > requirements.txt
 ```
-##Step 3: Run the Full Analytics Pipeline
+## Step 3: Run the Full Analytics Pipeline
 
 Navigate to the src directory:
 ```
@@ -103,11 +103,11 @@ Run the full pipeline with a single command:
 ```
 python main.py
 ```
-##What the Pipeline Does
+## What the Pipeline Does
 
 The pipeline executes the following steps in sequence:
 
-#🧹 Data Cleaning
+# 🧹 Data Cleaning
 
 Cleans raw transaction data
 
@@ -115,7 +115,7 @@ Handles missing values, cancellations, and returns
 
 Normalizes dates and monetary fields
 
-#📊 KPI Extraction
+# 📊 KPI Extraction
 
 Revenue & net revenue
 
@@ -125,19 +125,19 @@ Customer counts
 
 Monthly performance trends
 
-#📈 Exploratory Visualizations
+# 📈 Exploratory Visualizations
 
 Revenue trends over time
 
 Product-level performance insights
 
-#📤 Tableau Export
+# 📤 Tableau Export
 
 Prepares clean, analytics-ready CSV files
 
 Optimized for Tableau dashboards
 
-#🧠 Advanced Analytics
+# 🧠 Advanced Analytics
 
 RFM segmentation
 
@@ -149,7 +149,7 @@ Market basket analysis
 
 Revenue forecasting
 
-#💡 Business Insights
+# 💡 Business Insights
 
 Revenue at risk
 
@@ -165,9 +165,9 @@ Forecasted revenue exposure
 
 If successful, you will see:
 
-#🎉 Pipeline completed successfully
+# 🎉 Pipeline completed successfully
 
-##Outputs
+## Outputs
 
 All results are automatically saved to the outputs/ directory:
 
@@ -180,133 +180,133 @@ outputs/
 ├── plots/          # Python-generated visuals
 └── dashboard/      # Tableau-ready datasets
 
-##Business Analysis & Key Insights
-#1️⃣ Which customer segments deserve immediate retention focus?
+## Business Analysis & Key Insights
+# 1️⃣ Which customer segments deserve immediate retention focus?
 
 Answer: Retention efforts should prioritize Champions, Loyal Customers, and At-Risk High Value segments.
 
-#Segment	Revenue Share
+# Segment	Revenue Share
 Champions	54.9%
 Loyal Customers	18.9%
 Needs Attention	14.6%
 At-Risk High Value	7.1%
 Lost Customers	2.6%
 
-#Insight
+# Insight
 
 Champions and Loyal Customers generate ~73.8% of total revenue
 
 At-Risk High Value customers represent meaningful but vulnerable revenue
 
-#Business Action
+# Business Action
 
 Protect top segments with loyalty rewards and personalization
 
-#Launch targeted win-back campaigns
+# Launch targeted win-back campaigns
 
 #Deprioritize Lost Customers
 
-##2️⃣ How concentrated is revenue (Pareto risk)?
+## 2️⃣ How concentrated is revenue (Pareto risk)?
 
 Answer: Revenue is highly concentrated.
 
-#Top 20% of customers generate ~80.6% of total revenue
+# Top 20% of customers generate ~80.6% of total revenue
 
-##Business Action
+## Business Action
 
-#Invest in CRM, loyalty programs, and churn prevention for high-value customers
+# Invest in CRM, loyalty programs, and churn prevention for high-value customers
 
-##3️⃣ How much revenue is currently at risk?
+## 3️⃣ How much revenue is currently at risk?
 
 Answer: Revenue at risk (At-Risk + Lost): £2,016,350
 
-##Business Action
+## Business Action
 
-#Allocate retention budgets based on revenue impact, not customer count
+# Allocate retention budgets based on revenue impact, not customer count
 
-##4️⃣ Which customers drive disproportionate lifetime value?
+## 4️⃣ Which customers drive disproportionate lifetime value?
 
 Answer: A very small number of customers generate exceptionally high projected CLV.
 
 Some customers exceed £7M projected CLV over 6 months
 
-##Business Action
+## Business Action
 
-#Identify VIP customers
+# Identify VIP customers
 
-#Offer exclusive benefits and proactive engagement
+# Offer exclusive benefits and proactive engagement
 
-##5️⃣ Are customer cohorts showing declining retention?
+## 5️⃣ Are customer cohorts showing declining retention?
 
 Answer: Yes — newer cohorts retain less effectively.
 
-##Cohort Month	##Avg Retention
+## Cohort Month	## Avg Retention
 2010-12	        8.0%
 2010-11	        11.6%
 2010-10	        13.5%
 
-##Business Action
+## Business Action
 
-#Review acquisition channels
+# Review acquisition channels
 
-#Improve onboarding and early engagement
+# Improve onboarding and early engagement
 
-##6️⃣ Which products should be bundled?
+## 6️⃣ Which products should be bundled?
 
 Answer: Strong product affinity exists.
 
-##Top Bundles
+## Top Bundles
 
-#Pink Blue Felt Craft Trinket Box ↔ Pink Cream Felt Craft Trinket Box (Lift: 12.35)
+# Pink Blue Felt Craft Trinket Box ↔ Pink Cream Felt Craft Trinket Box (Lift: 12.35)
 
-#Charlotte Bag Suki Design ↔ Red Retrospot Charlotte Bag (Lift: 11.99)
+# Charlotte Bag Suki Design ↔ Red Retrospot Charlotte Bag (Lift: 11.99)
 
-#Woodland Charlotte Bag ↔ Strawberry Charlotte Bag
+# Woodland Charlotte Bag ↔ Strawberry Charlotte Bag
 
-##Business Action
+## Business Action
 
-#Introduce bundle pricing
+# Introduce bundle pricing
 
-#Cross-sell at checkout
+# Cross-sell at checkout
 
-#Optimize shelf placement
+# Optimize shelf placement
 
-##7️⃣ What is the 6-month revenue outlook?
+## 7️⃣ What is the 6-month revenue outlook?
 
-#Forecast
+# Forecast
 
-#Average monthly revenue: £839,507
+# Average monthly revenue: £839,507
 
-#6-month forecast: £5,037,040
+# 6-month forecast: £5,037,040
 
-##Insight Forecasts are achievable only if retention risk is actively managed.
+## Insight Forecasts are achievable only if retention risk is actively managed.
 
-##📊 Tableau Worksheets
+## 📊 Tableau Worksheets
 
 This project includes Tableau-ready datasets designed for executive dashboards covering revenue, customer value, retention, and risk.
 
-##⬇️ Insert Tableau dashboard image below
+## ⬇️ Insert Tableau dashboard image below
 
 <img width="1440" height="900" alt="Screenshot 2025-12-19 at 11 24 15 AM" src="https://github.com/user-attachments/assets/a6b42f28-94f2-4aa2-bf06-c9ff949ec8ab" />
 
 
-##🧠 What This Project Demonstrates
+## 🧠 What This Project Demonstrates
 
-#End-to-end retail analytics pipeline
+# End-to-end retail analytics pipeline
 
-#RFM segmentation and customer strategy
+# RFM segmentation and customer strategy
 
-#CLV modeling and Pareto analysis
+# CLV modeling and Pareto analysis
 
-#Cohort retention analytics
+# Cohort retention analytics
 
-#Market basket analysis
+# Market basket analysis
 
-#Revenue forecasting
+# Revenue forecasting
 
-#Translation of analytics into clear business decisions
+# Translation of analytics into clear business decisions
 
-##📁 Project Structure
+## 📁 Project Structure
 src/
 ├── 01_data_clean.py
 ├── 02_Extracting_KPIs.py
